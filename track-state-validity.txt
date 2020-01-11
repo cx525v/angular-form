@@ -1,0 +1,4 @@
+state       true            false
+visited     ng-touched      ng-untouched
+changed     ng-dirty        ng-pristine
+valid       ng-valid        ng-invalid
