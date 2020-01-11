@@ -1,23 +1,35 @@
 <div class="container-fluid">
   <h1> ... </h1>
-  <form>
+  <form #userForm="ngForm">
+    <div ngModelGroup="address">
+      <div class="form-group">
+        <label>Street</label>
+        <input type="text" class="form-control" name="street" ngModel>
+      </div>
+      
+       <div class="form-group">
+        <label>City</label>
+        <input type="text" class="form-control" name="city" ngModel>
+      </div>
+    </div>
+  
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" ngModel name="userName">
     </div>
     
     <div class="form-grou">
       <label>Email</label>
-      <input type="email" class="form-control">
+      <input type="email" class="form-control" ngModel name="email">
     </div>
     
      <div class="form-grou">
       <label>Phone</label>
-      <input type="tel" class="form-control">
+      <input type="tel" class="form-control" ngModel name="phone">
     </div>
     
     <div class="form-group">
-      <select class="custom-select">
+      <select class="custom-select" ngModel name="topic">
         <option selected>I am interested in </option>
         <option *ngFor="let topic of topics">{{topic}}</option>
       </select>
@@ -26,17 +38,17 @@
     <div class="mb-3">
       <label>Time preference</label>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="timePreference" value="morning">
+        <input class="form-check-input" type="radio" name="timePreference" value="morning" ngModel name="timePreference">
         <label class="form-check-label">Morning</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="timePreference" value="evening">
+        <input class="form-check-input" type="radio" name="timePreference" value="evening" ngModel name="timePreference">
         <label class="form-check-label">Evening</label>
       </div>
     </div>
     
     <div class="form-check mb-3">
-      <input class="form-check-input" type="checkbox">
+      <input class="form-check-input" type="checkbox" ngModel name="subscribe">
       <label class="form-check-label"> Send me promtional offers </label>
     </div>
     
