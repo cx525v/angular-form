@@ -1,6 +1,11 @@
+//.ts
+userModel
+
+//
 <div class="container-fluid">
   <h1> ... </h1>
   <form #userForm="ngForm">
+  {{userForm.value |json}}
     <div ngModelGroup="address">
       <div class="form-group">
         <label>Street</label>
@@ -15,7 +20,7 @@
   
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control" ngModel name="userName">
+      <input type="text" class="form-control" [(ngModel)]="userModel.name" name="userName">
     </div>
     
     <div class="form-grou">
