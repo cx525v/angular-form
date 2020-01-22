@@ -50,7 +50,7 @@
       <label class="form-check-label"> Send me promtional offers </label>
     </div>
     
-    <button class="btn btn-primary" type="submit">Submit form</button>
+    <button [disable]="userForm.form.invalid" class="btn btn-primary" type="submit">Submit form</button>
     
   </form>
   
