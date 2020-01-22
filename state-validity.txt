@@ -1,6 +1,7 @@
 <div class="container-fluid mb-5">
   <h1> ... </h1>
-  <form #userForm="ngForm" (ngSubmit) ="onSubmit()" novalidate>
+  <div class="alert alert-danger" *ngIf="errorMsg"> {{errorMsg}} </div>
+  <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit) ="onSubmit()" novalidate>
   {{userForm.value |json}} 
   
     <div class="form-group">
@@ -56,6 +57,8 @@
   
   #######################
   topicHasError = true;
+  submitted = false;
+  errorMsg ;
   validateTopic(value){
     if(value === "default") {
       this.topicHasError = true;
@@ -65,6 +68,21 @@
   }
   
   onSubmit() {
-    this.userModel
+    this.submitted = true;
+    // this.userModel
+    this.enrollmentSrvice.enroll(this.userModel).subscribe( 
+    data => console.log(data);
+    error=> this.errorMsg = error.satusText;
+  }
+  
+  
+  #####
+  enroll(user: user) {
+     return this._http.post<any>(this.url, user)
+        .pipe(catchError(this.errorHandler))
+  }
+  
+  errorHandler(error: HttpErrorResponse) {
+    return throwError(error);
   }
   
