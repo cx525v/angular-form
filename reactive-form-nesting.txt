@@ -83,3 +83,23 @@ loadApiData() {
   });
 }
 */
+
+
+################
+FormBuilder
+
+import {} from '@angular/forms';
+
+constructor(private fb: FormBuilder) {
+}
+
+registrationForm = this.fb.group({
+ userName: [''],
+ password: [''],
+ confirmPassword: ['']
+ address: this.fb.group({
+   city: [''],
+   state:[''],
+   postalCode: ['']
+ })
+});
