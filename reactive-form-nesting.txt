@@ -1,0 +1,85 @@
+#############
+app.module.ts
+
+import { BrowserModule } from '@angular/platform-brower';
+import { NgModule} from '@angular/core';
+import { ReactiveFormsModule} from '@angular/forms';
+
+
+#######
+.html
+
+<div class="container-fluid">
+  <h2>Registration Form</h2>
+  <form [formGroup]="registrationForm">
+    <div class= "form-group">
+      <label>user name</label>
+      <input formControlName="userName" type="text" class="form-control">
+    </div>
+    
+     <div class= "form-group">
+      <label>password</label>
+      <input formControlName="password" type="password" class="form-control">
+    </div>
+    
+     <div class= "form-group">
+      <label>confirm password</label>
+      <input formControlName="confirmPassword" type="password" class="form-control">
+    </div>
+    
+    <div formGroupName="address">
+      <div class= "form-group">
+        <label>city</label>
+        <input formControlName="city" type="text" class="form-control">
+      </div>
+       <div class= "form-group">
+        <label>State</label>
+        <input formControlName="state type="text" class="form-control">
+      </div>
+         <div class= "form-group">
+        <label>Postal Code</label>
+        <input formControlName="postalCode" type="text" class="form-control">
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Register</button>
+    <button (click)="loadApiData()" class="btn btn-secondary ml-2" type="button">Load API </button>
+  </form>
+</div>
+
+######
+component.ts
+import {FormGroup} from '@angular/forms';
+
+registrationForm = new FormGroup({
+  userName: new FormControl(''),
+  password: new FormControl(''),
+  confirmPassword: new FormControl(''),
+  address: new FormGroup ({
+    city: new FormControl(''),
+    state: new FormControl(''),
+    postalCode: new FormControl('')
+  });
+});
+
+loadApiData() {
+  this.registrationForm.setValue({
+    userName: 'Bruce',
+    password: 'test',
+    conformPassword: 'test',
+    address: {
+      city: '',
+      state: 'FL',
+      postalCode:'12345'
+    }
+  });
+}
+
+/*
+loadApiData() {
+  this.registrationForm.patchValue({
+    userName: 'Bruce',
+    password: 'test',
+    conformPassword: 'test', 
+  });
+}
+*/
