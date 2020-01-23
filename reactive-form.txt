@@ -1,0 +1,42 @@
+#############
+app.module.ts
+
+import { BrowserModule } from '@angular/platform-brower';
+import { NgModule} from '@angular/core';
+import { ReactiveFormsModule} from '@angular/forms';
+
+
+#######
+.html
+
+<div class="container-fluid">
+  <h2>Registration Form</h2>
+  <form [formGroup]="registrationForm">
+    <div class= "form-group">
+      <label>user name</label>
+      <input formControlName="userName" type="text" class="form-control">
+    </div>
+    
+     <div class= "form-group">
+      <label>password</label>
+      <input formControlName="password" type="password" class="form-control">
+    </div>
+    
+     <div class= "form-group">
+      <label>confirm password</label>
+      <input formControlName="confirmPassword" type="password" class="form-control">
+    </div>
+  </form>
+</div>
+
+######
+component.ts
+import {FormGroup} from '@angular/forms';
+
+registrationForm = new FormGroup({
+  userName: new FormControl(''),
+  password: new FormControl(''),
+  confirmPassword: new FormControl('')
+});
+
+
